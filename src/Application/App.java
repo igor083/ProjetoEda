@@ -12,10 +12,12 @@ public class App {
 
     	//int []arrayConst=Listas.listaConstante(10);
     	//System.out.println(Arrays.toString(arrayConst));
-  //  	int []arrayConst=Listas.listaOrdInicio(100);
+   	int []listaOrdInicio=Listas.listaOrdInicio(100);
 //    	System.out.println(Arrays.toString(arrayConst));
     	int []arrayConst=Listas.listaOrdenadaDecres(100);
-    	System.out.println(Arrays.toString(arrayConst));
-    	
+    	System.out.println(Arrays.toString(listaOrdInicio));
+
+    	Ordena.quickSort(listaOrdInicio);
+    	System.out.println(Arrays.toString(listaOrdInicio));
    }
 }
