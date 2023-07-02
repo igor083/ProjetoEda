@@ -64,7 +64,7 @@ public class Ordena {
 		return divide(array, 0, array.length - 1);
 	}
 
-	private static int[] divide(int[] array, int left, int right) {
+	public static int[] divide(int[] array, int left, int right) {
 		if (left == right) {
 			return new int[] { array[left] };
 		}
@@ -78,7 +78,7 @@ public class Ordena {
 		return result;
 	}
 
-	private static int[] merge(int[] leftArray, int[] rightArray) {
+	public static int[] merge(int[] leftArray, int[] rightArray) {
 		int leftLen = leftArray.length;
 		int rightLen = rightArray.length;
 		int[] ans = new int[leftLen + rightLen];
@@ -146,5 +146,51 @@ public class Ordena {
 		}
 		swap(A, low, border-1);
 		return border-1;
+	}
+
+	public static void heapSort(int[] array) {
+		int n = array.length;
+
+		// Construir o heap máximo
+		for (int i = n / 2 - 1; i >= 0; i--) {
+			heapify(array, n, i);
+		}
+
+		// Extrair elementos um por um do heap
+		for (int i = n - 1; i >= 0; i--) {
+			// Mover a raiz atual para o final
+			int temp = array[0];
+			array[0] = array[i];
+			array[i] = temp;
+
+			// Chamar heapify na subárvore reduzida
+			heapify(array, i, 0);
+		}
+	}
+
+	public static void heapify(int[] array, int n, int i) {
+		int largest = i; // Inicializar a raiz como o maior elemento
+		int left = 2 * i + 1; // Filho esquerdo
+		int right = 2 * i + 2; // Filho direito
+
+		// Se o filho esquerdo é maior que a raiz
+		if (left < n && array[left] > array[largest]) {
+			largest = left;
+		}
+
+		// Se o filho direito é maior que a raiz
+		if (right < n && array[right] > array[largest]) {
+			largest = right;
+		}
+
+		// Se o maior não for a raiz
+		if (largest != i) {
+			int swap = array[i];
+			array[i] = array[largest];
+			array[largest] = swap;
+
+			// Recursivamente chamar heapify na subárvore afetada
+			heapify(array, n, largest);
+		}
 	}
 }
