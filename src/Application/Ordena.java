@@ -1,5 +1,7 @@
 package Application;
 
+import java.util.Arrays;
+
 public class Ordena {
 
 	public static int[] insertionSort(int[] array) {
@@ -28,7 +30,31 @@ public class Ordena {
 			array[indexMenor] = aux;}
 		}
 		return array;
+	}
 
+	public static int[] countingSort(int array[]) {
+		int maiorNumero = -1;
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] > maiorNumero)
+				maiorNumero = array[i];
+		}
+
+		int[] balde = new int[maiorNumero+1];
+
+		for (int j = 0; j < array.length; j++) {
+			balde[array[j]]++;
+		}
+
+		int arrPos = 0;
+		for (int c = 0; c < balde.length; c++) {
+			for (int j = 0; j < balde[c]; j++) {
+				array[arrPos] = c;
+				arrPos++;
+			}
+		}
+
+		return array;
 	}
 
 }
