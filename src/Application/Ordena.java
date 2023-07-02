@@ -18,19 +18,18 @@ public class Ordena {
 		return array;
 	}
 
-	public static int[] selectionSort(int array[]) {
-
+	public static void selectionSort(int array[]) {
 		for (int i = 0; i < array.length - 1; i++) {
-			int indexMenor = i;
-			for (int j = i + 1; j < array.length; j++) {
-				if (array[j] < array[indexMenor])
-					indexMenor = j;
-
-			int aux = array[i];
-			array[i] = array[indexMenor];
-			array[indexMenor] = aux;}
+			int iMin = i;
+			for (int j = i + 1; j < array.length; j++)
+				if (array[j] < array[iMin])
+					iMin = j;
+			if (i != iMin) {
+				int temp = array[i];
+				array[i] = array[iMin];
+				array[iMin] = temp;
+			}
 		}
-		return array;
 	}
 
 	public static int[] countingSort(int array[]) {

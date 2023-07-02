@@ -1,25 +1,40 @@
 package Application;
+
 import java.util.Arrays;
+
 public class App {
 
+	public static void main(String args[]) {
 
-    public static void main(String args []) {
-		int[] desordenado = Listas.listaDesordenada(10);
-		int[] ordernadaCrescente = Listas.listaOrdenadaCres(10);
-    	int[] ordernadaDecrescente = Listas.listaOrdenadaDecres(10);
-		int[] constante = Listas.listaConstante(10);
+		int c = 200000;
+		int[] desordenado = Listas.listaDesordenada(c); 
 
+		/*
+		 * int[] listaOrdFim = Listas.listaOrdFinal(c);
+		 * int[] constante = Listas.listaConstante(c);
+		 * int[] ordernadaCrescente =Listas.listaOrdenadaCres(c);  
+		 * int[] ordernadaDecrescente = Listas.listaOrdenadaDecres(c); 
+		 * int[] listaOrdInicio = Listas.listaOrdInicio(c);
+		 */
+		
+		int media = 0;
+		for (int i = 0; i < 10; i++) {
+			long inicio = 0;
+			long fim = 0;
 
-		int[] teste = {2, 7, 1, 9, 6, 3, 99, 22, 0};
+			inicio = System.nanoTime();
+			Ordena.countingSort(desordenado);
+			fim = System.nanoTime();
+			media += fim - inicio;
+			
+		}
+		System.out.println(media / 10);
 
-		System.out.println(Arrays.toString(teste));
-		int[] orden = Ordena.countingSort(teste);
-		System.out.println(Arrays.toString(orden));
-
-
-    	//System.out.println("Desordenado: " + Arrays.toString(desordenado));
-    	//System.out.println("Ordernada Crescente: " + Arrays.toString(ordernadaCrescente));
-    	//System.out.println("Ordernada Decrescente: " + Arrays.toString(ordernadaDecrescente));
-    	//System.out.println("Constante: " + Arrays.toString(constante));
-   	}
+		// System.out.println("Desordenado: " + Arrays.toString(desordenado));
+		// System.out.println("Ordernada Crescente: " +
+		// Arrays.toString(ordernadaCrescente));
+		// System.out.println("Ordernada Decrescente: " +
+		// Arrays.toString(ordernadaDecrescente));
+		// System.out.println("Constante: " + Arrays.toString(constante));
+	}
 }
